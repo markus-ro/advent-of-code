@@ -1,7 +1,3 @@
-"""
-Docstring for day2.day_two
-"""
-
 from sys import argv
 from pathlib import Path
 

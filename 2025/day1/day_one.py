@@ -1,9 +1,3 @@
-"""
-This file takes as input a file containing a rotation direction alongside a 
-distance how far to rotate. The numbers are in the form of a dial with numbers
-ranging from 0 to 99.
-"""
-
 from sys import argv
 from pathlib import Path
 
