@@ -9,9 +9,12 @@ def solution_star_one(red_tiles):
         x = abs(first_tile[0] - second_tile[0]) + 1
         y = abs(first_tile[1] - second_tile[1]) + 1
 
-        max_space = x * y if x * y > max_space else max_space
+        max_space = max(max_space, x*y)
 
     return max_space
+
+def solution_star_two(red_tiles):
+    max_space = 0
 
 if __name__ == "__main__":
     red_tiles = [[int(x) for x in line.split(",")] for line in [x.strip() for x in Path(argv[1]).open().readlines()]]
