@@ -25,12 +25,7 @@ def solution_star_two(red_tiles):
         if polygon.contains(box(min_x, min_y, max_x, max_y)):
             return sq[2]
         
-    return -1
-
-        
-
-
-
+    return -1    
 
 if __name__ == "__main__":
     red_tiles = [[int(x) for x in line.split(",")] for line in [x.strip() for x in Path(argv[1]).open().readlines()]]
