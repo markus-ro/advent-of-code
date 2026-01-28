@@ -55,7 +55,7 @@ if __name__ == "__main__":
     device_data_two = [x.strip() for x in Path(argv[2]).open().readlines()]
 
     graph, mapping = convert_to_graph(device_data)
-    print("Solution Star One: ", solution_star_one(graph,mapping))
+    print("Solution Star One:", solution_star_one(graph,mapping))
 
     graph, mapping = convert_to_graph(device_data_two)
-    print("Solution Star Two: ", solution_star_two(graph, mapping))
+    print("Solution Star Two:", solution_star_two(graph, mapping))

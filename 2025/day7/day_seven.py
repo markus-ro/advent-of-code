@@ -38,7 +38,7 @@ if __name__ == "__main__":
     tachyon_manifold = [x.strip() for x in Path(argv[1]).open().readlines()]
 
     _splits = solution_star_one(tachyon_manifold)
-    print("Star 1:", _splits)
+    print("Solution Star One:", _splits)
 
-    print("Star 2:", solution_star_two(tachyon_manifold))
+    print("Solution Star Two:", solution_star_two(tachyon_manifold))
 

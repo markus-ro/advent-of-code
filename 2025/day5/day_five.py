@@ -66,5 +66,5 @@ if __name__ == "__main__":
     puzzle_data = Path(argv[1]).open().readlines()
     datatbase, ingredient_ids = setup_database(puzzle_data)
 
-    print(solution_star_one(datatbase, ingredient_ids))
-    print(solution_star_two(datatbase))
+    print("Solution Star One:", solution_star_one(datatbase, ingredient_ids))
+    print("Solution Star Two:", solution_star_two(datatbase))

@@ -47,7 +47,7 @@ if __name__ == "__main__":
     puzzle_data = Path(argv[1]).open().readlines()
 
     numbers, ops = parse_input_star_one(puzzle_data)
-    print(accumulate(numbers, ops))
+    print("Solution Star One:", accumulate(numbers, ops))
 
     numbers, ops = parse_input_star_two(puzzle_data)
-    print(accumulate(numbers, ops))
+    print("Solution Star Two:", accumulate(numbers, ops))

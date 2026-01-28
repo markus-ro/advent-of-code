@@ -71,5 +71,5 @@ if __name__ == "__main__":
     printing_storage = Path(argv[1]).open().readlines()
     storage = StorageLayout(printing_storage)
     
-    print(solution_star_one(storage))
-    print(solution_star_two(storage))
+    print("Solution Star One:", solution_star_one(storage))
+    print("Solution Star Two:", solution_star_two(storage))

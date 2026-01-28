@@ -29,5 +29,5 @@ def solution_star_two(red_tiles):
 
 if __name__ == "__main__":
     red_tiles = [[int(x) for x in line.split(",")] for line in [x.strip() for x in Path(argv[1]).open().readlines()]]
-    print("Solution Star One: ", solution_star_one(red_tiles)[0][2])
-    print("Solution Star Two: ", solution_star_two(red_tiles))
+    print("Solution Star One:", solution_star_one(red_tiles)[0][2])
+    print("Solution Star Two:", solution_star_two(red_tiles))
