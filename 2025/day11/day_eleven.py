@@ -22,9 +22,6 @@ def convert_to_graph(devices):
             graph[dev_idx, con_idx] = 1
     return graph, mapping
 
-def dfs(graph, node):
-    pass
-
 def solution_star_one(graph, map):
     def backtrack(vert):
         acc = 0
