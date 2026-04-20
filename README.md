@@ -9,6 +9,6 @@ python day_x.py input_data.txt
 
 ## External Libraries
 I tried to refrain from using external libraries for solution. Yet, in three cases I could not get around it:
-* [Day Nine](/2025/day9/day_nine.py) used shapely for point in polygon check
-* [Day Ten](/2025/day10/day_ten.py) used PuLP for linear programming
-* [Day Eleven](/2025/day11/day_eleven.py) used NumPy for graph representation
+* [Day Nine](/2025/day_nine.py) used shapely for point in polygon check
+* [Day Ten](/2025/day_ten.py) used PuLP for linear programming
+* [Day Eleven](/2025/day_eleven.py) used NumPy for graph representation
