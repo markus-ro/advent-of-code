@@ -37,9 +37,33 @@ def solution_star_two(map: list[list[str]], start_position: tuple[int, int]) -> 
     def turn_right(direction: tuple[int, int]) -> tuple[int, int]:
         return (direction[1], -direction[0])
 
-    positions = solution_star_one(map, start_position)
+    def check_for_circle(obstruction_pos: tuple[int, int]) -> bool:
+        position = start_position
+        direction = (-1, 0)
+        visited_states = set()
+        
+        while True:
+            state = (position, direction)
+            if state in visited_states:
+                return True
+            visited_states.add(state)
+            
+            next_position = (position[0] + direction[0], position[1] + direction[1])
+            if next_position[0] < 0 or next_position[0] >= len(map) or next_position[1] < 0 or next_position[1] >= len(map[0]):
+                return False
+            elif map[next_position[0]][next_position[1]] == "#" or next_position == obstruction_pos:
+                direction = turn_right(direction)
+            else:
+                position = next_position
+
+    visited_positions = solution_star_one(map, start_position)
     circles = 0
     
+    for position in visited_positions.keys():
+        if position != start_position:
+            if check_for_circle(position):
+                circles += 1
+
     return circles
 
 if __name__ == "__main__":
