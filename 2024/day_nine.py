@@ -68,6 +68,5 @@ def solution_star_two(disk_map: list[int]) -> int:
 
 if __name__ == "__main__":
     disk_map = parse_input(Path(argv[1]))
-    print("".join(expand_disk_map(disk_map)[0]))
     print("Solution Star One:", solution_star_one(disk_map))
     print("Solution Star Two:", solution_star_two(disk_map))
