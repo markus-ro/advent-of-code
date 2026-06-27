@@ -60,6 +60,5 @@ def solution_star_two(topographic_map: np.ndarray[np.ndarray[np.uint8]]) -> int:
 
 if __name__ == "__main__":
     topographic_map = parse_input(Path(argv[1]))
-    print(topographic_map.dtype)
     print("Solution Star One:", solution_star_one(topographic_map))
     print("Solution Star Two:", solution_star_two(topographic_map))
