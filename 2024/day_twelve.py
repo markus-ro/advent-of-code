@@ -44,8 +44,100 @@ def solution_star_one(region: list[list[str]]) -> int:
                 total += fences * len(new_region)
     return total
 
+def count_sides(region_cells: set[tuple[int, int]]) -> int:
+    """Count the number of sides in a region by counting corners."""
+    sides = 0
+    
+    for x, y in region_cells:
+        # Count outer corners (convex): where two perpendicular edges are exposed
+        # Top-left outer corner
+        if (x - 1, y) not in region_cells and (x, y - 1) not in region_cells:
+            sides += 1
+        
+        # Top-right outer corner
+        if (x - 1, y) not in region_cells and (x, y + 1) not in region_cells:
+            sides += 1
+        
+        # Bottom-right outer corner
+        if (x + 1, y) not in region_cells and (x, y + 1) not in region_cells:
+            sides += 1
+        
+        # Bottom-left outer corner
+        if (x + 1, y) not in region_cells and (x, y - 1) not in region_cells:
+            sides += 1
+        
+        # Count inner corners (concave): where region cells meet at corners but not diagonally
+        # Top-left inner corner
+        if (
+            (x - 1, y) in region_cells
+            and (x, y - 1) in region_cells
+            and (x - 1, y - 1) not in region_cells
+        ):
+            sides += 1
+        
+        # Top-right inner corner
+        if (
+            (x - 1, y) in region_cells
+            and (x, y + 1) in region_cells
+            and (x - 1, y + 1) not in region_cells
+        ):
+            sides += 1
+        
+        # Bottom-right inner corner
+        if (
+            (x + 1, y) in region_cells
+            and (x, y + 1) in region_cells
+            and (x + 1, y + 1) not in region_cells
+        ):
+            sides += 1
+        
+        # Bottom-left inner corner
+        if (
+            (x + 1, y) in region_cells
+            and (x, y - 1) in region_cells
+            and (x + 1, y - 1) not in region_cells
+        ):
+            sides += 1
+    
+    return sides
+
 def solution_star_two(region: list[list[str]]) -> int:
-    pass
+    region_visited = [x.copy() for x in region]
+
+    def flood(
+        position: tuple[int, int], sign: str, out_region: list[tuple[int, int]]
+    ) -> None:
+        _x, _y = position
+        if not 0 <= _x < len(region):
+            return
+        if not 0 <= _y < len(region[_x]):
+            return
+
+        # position has already been visited
+        if region_visited[_x][_y] == ".":
+            return
+
+        # region has different sign
+        if region[_x][_y] != sign:
+            return
+
+        # region has not yet been visited and has correct sign
+        region_visited[_x][_y] = "."
+        out_region.append(position)
+        flood((_x - 1, _y), sign, out_region)
+        flood((_x + 1, _y), sign, out_region)
+        flood((_x, _y + 1), sign, out_region)
+        flood((_x, _y - 1), sign, out_region)
+
+    total = 0
+    for x in range(len(region)):
+        for y in range(len(region[0])):
+            if region_visited[x][y] != ".":
+                new_region: list[tuple[int, int]] = []
+                flood((x, y), region_visited[x][y], new_region)
+                sides = count_sides(set(new_region))
+                total += sides * len(new_region)
+    return total
 
 if __name__ == "__main__":
     region = parse_input(Path(argv[1]))
