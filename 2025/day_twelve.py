@@ -1,8 +1,9 @@
 from pathlib import Path
 from sys import argv
 
+
 class Present:
-    def __init__(self, present_id, present_ascii):
+    def __init__(self, present_id: int, present_ascii: str):
         self.present_id = present_id
         self.present_ascii = present_ascii
         self.size = "".join(present_ascii).count("#")
@@ -14,7 +15,7 @@ class Present:
         return str(self)
 
 class Tree:
-    def __init__(self, width, height, presents):
+    def __init__(self, width: int, height: int, presents: list):
         self.width = width
         self.height = height
         self.presents = presents
@@ -25,7 +26,7 @@ class Tree:
     def __repr__(self):
         return str(self)
 
-def solution_star_one(trees, presents):
+def solution_star_one(trees: list, presents: dict):
     fitting_trees = 0
     for tree in trees:
         tree_area, presents_area = tree.width * tree.height, 0
@@ -39,8 +40,8 @@ def solution_star_one(trees, presents):
 
 if __name__ == "__main__":
     input_data = Path(argv[1]).open().readlines()
-    presents = dict()
-    trees = []
+    presents: dict[int, Present] = {}
+    trees: list[Tree] = []
 
     for i in range(len(input_data)):
         cur_line = input_data[i].strip()
