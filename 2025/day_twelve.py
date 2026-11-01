@@ -3,7 +3,7 @@ from sys import argv
 
 
 class Present:
-    def __init__(self, present_id: int, present_ascii: str):
+    def __init__(self, present_id: int, present_ascii: list[str]):
         self.present_id = present_id
         self.present_ascii = present_ascii
         self.size = "".join(present_ascii).count("#")
